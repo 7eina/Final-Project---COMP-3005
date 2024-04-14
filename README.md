@@ -2,10 +2,6 @@
 
 [Demo Link](https://youtu.be/yourDemoVideoLink)
 
-***Note to Viewer***
-- Please excuse any interface inconsistencies; the demo is recorded under development settings.
-- Light mode interface showcased.
-
 ## Project Description
 
 ymApp is a .NET Core 8 web application designed to manage the daily operations of health and fitness clubs. It provides tools for member and session management, booking classes, tracking equipment maintenance, and processing payments, all within a user-friendly interface.
