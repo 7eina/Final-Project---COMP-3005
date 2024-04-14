@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to GymApp </h1>    
+</div>
+<div class="text-center">
+    <h1 class="display-4"> Please select your role to start!</h1>
+    <a class="btn btn-danger" href="@Url.Action("NewMember", "Home")">New Member</a>
+    <a class="btn btn-primary" onclick="showEmailPrompt('member')">Member</a>
+    <a class="btn btn-secondary" onclick="showTrainerIdPrompt('trainer')">Trainer</a>
+    <br />
+    <br />
+    <a class="btn btn-success" href="@Url.Action("Index", "Equipments")">Admin Staff-Equipments</a>
+    <br />
+    <br />
+    <a class="btn btn-success" href="@Url.Action("Index", "Payments")">Admin Staff-Payments</a>
+    <br />
+    <br />
+    <a class="btn btn-success" href="@Url.Action("Index", "Bookings")">Admin Staff-Schedule</a>
+</div>
+
+<!-- Modal for Member email input -->
+<div class="modal" tabindex="-1" role="dialog" id="emailModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Your Email</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="emailForm" action="@Url.Action("FindMember", "Home")" method="post">
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Find</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Trainer Id input -->
+<div class="modal" tabindex="-1" role="dialog" id="trainerIdModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Your ID</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="trainerIdForm" action="@Url.Action("FindTrainer", "Home")" method="post">
+                    <div class="form-group">
+                        <label for="trainerid">Trainer Id:</label>
+                        <input type="number" class="form-control" id="trainerid" name="trainerid" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Find</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function showEmailPrompt(role) {
+            $('#emailModal').modal('show');
+            $('#emailForm').attr('action', '@Url.Action("FindMember", "Home")');
+        }
+        function showTrainerIdPrompt(role) {
+            $('#trainerIdModal').modal('show');
+            $('#trainerIdForm').attr('action', '@Url.Action("FindTrainer", "Home")');
+        }
+    </script>
+}
