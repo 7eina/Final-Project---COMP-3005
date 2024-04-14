@@ -1,6 +1,6 @@
 # GymApp
 
-[Demo Link](https://youtu.be/yourDemoVideoLink)
+[Demo Link](https://youtu.be/tDbWO4jOr6o)
 
 ## Project Description
 
