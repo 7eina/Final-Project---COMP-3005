@@ -8,7 +8,7 @@
 
 ## Project Description
 
-GymApp is a comprehensive web application developed using .NET Core 8 and C#, integrated with a PostgreSQL database. This sophisticated system is designed to streamline the management of health and fitness clubs, facilitating efficient operations ranging from member management to scheduling and maintenance tracking.
+ymApp is a .NET Core 8 web application designed to manage the daily operations of health and fitness clubs. It provides tools for member and session management, booking classes, tracking equipment maintenance, and processing payments, all within a user-friendly interface.
 
 ## Application Functions
 
@@ -70,7 +70,9 @@ Contains Entity Framework migration files that manage database schema versions a
     - Launch the application using IIS Express.
     - Open a web browser and go to the displayed localhost URL to interact with GymApp.
 
-## Note on Error Handling and Data Validation
+## Considerations and Limitations
 
-- Comprehensive error handling is implemented to manage exceptions related to database interactions and web requests.
-- Data validation is rigorously implemented at both the model and database levels, enforcing data integrity and consistency across the application.
+- **Scheduling Conflicts**: The current design does not prevent overlapping bookings for rooms or sessions. Implementing additional logic or constraints to check for conflicts during booking could help prevent these issues.
+- **Data Validation**: The schema lacks CHECK constraints that are necessary for validating data upon entry. For example, ensuring that `weight_goal_end_kg` is greater than `weight_goal_start_kg`. Incorporating these constraints will help maintain logical consistency in the database.
+- **Cascade Rules**: Currently, the database does not implement cascade rules for foreign key relationships. Adding ON DELETE and ON UPDATE CASCADE rules will ensure that deletions or updates maintain referential integrity.
+- **Normalization and Redundancy**: The separation of sessions and classes as distinct entities, although treated as types of bookings, could be revisited to reduce redundancy and integrate these concepts more closely.
